@@ -38,10 +38,16 @@
       "@main/*": ["main/*"],
       "@renderer/*": ["renderer/*"],
       "@root/*": ["../*"],
-      "@static/*": ["renderer/template/dist/*"]
+      "@static/*": ["renderer/template/dist/*"],
+      "overstated": ["@types/overstated-types.d.ts"] // ← ADD THIS LINE
     }
   }
 }
+
+// After Edit:
+//
+// npx tsc --build --clean
+//
 
 // {
 //   "compilerOptions": {
