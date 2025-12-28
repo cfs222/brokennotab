@@ -10,21 +10,21 @@ declare module NodeJS {
 }
 
 /* CASH */
-type Cash = any; // ✅ ADD THIS LINE
+export type Cash = any; // ✅ ADD THIS LINE
 // Use namespace merging to add properties to the existing $ variable
 
 /* BASE OBJECTS */
 
-type AttachmentObj = {
+export type AttachmentObj = {
   fileName: string;
   filePath: string;
 };
 
-type AttachmentsObj = {
+export type AttachmentsObj = {
   [fileName: string]: AttachmentObj;
 };
 
-type ContextKeysObj = {
+export type ContextKeysObj = {
   hasNote: boolean;
   isAttachmentsEditing: boolean;
   isEditorEditing: boolean;
@@ -38,13 +38,13 @@ type ContextKeysObj = {
   theme: string;
 };
 
-type MonacoEditor =
+export type MonacoEditor =
   import("monaco-editor/esm/vs/editor/editor.api.js").editor.ICodeEditor & {
     getChangeDate: () => Date | undefined;
     getFilePath: () => string;
   };
 
-type NoteMetadataObj = {
+export type NoteMetadataObj = {
   attachments: string[];
   created: Date;
   modified: Date;
@@ -56,7 +56,7 @@ type NoteMetadataObj = {
   title: string;
 };
 
-type NoteObj = {
+export type NoteObj = {
   content: string;
   filePath: string;
   checksum: number;
@@ -68,26 +68,26 @@ type NotesObj = {
   [filePath: string]: NoteObj;
 };
 
-type QuickPanelResultsRawItem = {
+export type QuickPanelResultsRawItem = {
   title: string;
   description?: string;
 };
 
-type QuickPanelResultsNoteItem = NoteObj;
+export type QuickPanelResultsNoteItem = NoteObj;
 
-type QuickPanelResultsAttachmentItem = AttachmentObj;
+export type QuickPanelResultsAttachmentItem = AttachmentObj;
 
-type QuickPanelResultsItem =
+export type QuickPanelResultsItem =
   | QuickPanelResultsRawItem
   | QuickPanelResultsNoteItem
   | QuickPanelResultsAttachmentItem;
 
-type QuickPanelResults = {
+export type QuickPanelResults = {
   empty: string;
   items: QuickPanelResultsItem[];
 };
 
-type TagObj = {
+export type TagObj = {
   collapsed: boolean;
   name: string;
   notes: NoteObj[];
@@ -99,32 +99,32 @@ type TagObj = {
   };
 };
 
-type TagsObj = {
+export type TagsObj = {
   [filePath: string]: TagObj;
 };
 
 /* MAIN CONTAINERS STATES */
 
-type AttachmentState = {};
+export type AttachmentState = {};
 
-type AttachmentsState = {
+export type AttachmentsState = {
   attachments: AttachmentsObj;
   editing: boolean;
 };
 
-type ClipboardState = {};
+export type ClipboardState = {};
 
-type ContextKeysState = {};
+export type ContextKeysState = {};
 
-type CWDState = {};
+export type CWDState = {};
 
-type EditorState = {
+export type EditorState = {
   monaco?: MonacoEditor;
   editing: boolean;
   split: boolean;
 };
 
-type EditorEditingState = {
+export type EditorEditingState = {
   filePath: string;
   model:
     | import("monaco-editor/esm/vs/editor/editor.api.js").editor.ITextModel
@@ -134,73 +134,73 @@ type EditorEditingState = {
     | null;
 };
 
-type EditorPreviewingState = {
+export type EditorPreviewingState = {
   filePath: string;
   scrollTop: number;
 };
 
-type ExportState = {};
+export type ExportState = {};
 
-type ImportState = {};
+export type ImportState = {};
 
-type LoadingState = {
+export type LoadingState = {
   loading: boolean;
 };
 
-type MultiEditorState = {
+export type MultiEditorState = {
   notes: NoteObj[];
   skippable: boolean;
 };
 
-type NoteState = {
+export type NoteState = {
   note: NoteObj | undefined;
 };
 
-type NotesState = {
+export type NotesState = {
   notes: NotesObj;
 };
 
-type QuickPanelState = {
+export type QuickPanelState = {
   open: boolean;
   query: string;
   itemIndex: number;
   results: QuickPanelResults;
 };
 
-type SearchState = {
+export type SearchState = {
   query: string;
   notes: NoteObj[];
 };
 
-type SkeletonState = {};
+export type SkeletonState = {};
 
-type SortingState = {
+export type SortingState = {
   by: import("@renderer/utils/sorting").SortingBys;
   type: import("@renderer/utils/sorting").SortingTypes;
 };
 
-type TagState = {
+export type TagState = {
   tag: string;
 };
 
-type TagsState = {
+export type TagsState = {
   tags: TagsObj;
   editing: boolean;
 };
 
-type ThemeState = {
+export type ThemeState = {
   theme: string;
 };
 
-type ThemesState = {
+export type ThemesState = {
   themes: string[];
 };
 
-type TrashState = {};
+export type TrashState = {};
 
-type TutorialState = {};
+export type TutorialState = {};
 
-type WindowState = {
+export type WindowState = {
   focus: boolean;
   fullscreen: boolean;
   sidebar: boolean;
@@ -209,7 +209,7 @@ type WindowState = {
 
 /* MAIN */
 
-type MainState = {
+export type MainState = {
   attachment: AttachmentState;
   attachments: AttachmentsState;
   clipboard: ClipboardState;
@@ -234,7 +234,7 @@ type MainState = {
   window: WindowState;
 };
 
-type MainCTX = {
+export type MainCTX = {
   state: MainState;
   suspend();
   unsuspend();
@@ -267,11 +267,11 @@ type MainCTX = {
   window: import("@renderer/containers/main/window").default;
 };
 
-type IMain = MainCTX & { ctx: MainCTX };
+export type IMain = MainCTX & { ctx: MainCTX };
 
 /* OTHERS */
 
-type PrintOptions = {
+export type PrintOptions = {
   html?: string;
   src?: string;
   dst: string;
