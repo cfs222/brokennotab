@@ -1,0 +1,33 @@
+{
+  "compilerOptions": {
+    "noEmit": true,
+    "target": "ES2019",
+    "module": "commonjs",
+    "jsx": "react",
+
+    "strict": false,
+    "noImplicitAny": false,
+    "skipLibCheck": true,
+
+    "moduleResolution": "node",
+    "esModuleInterop": true,
+    "allowSyntheticDefaultImports": true,
+    "resolveJsonModule": true,
+    "allowUmdGlobalAccess": true,
+
+    "baseUrl": "src",
+    "paths": {
+      "@common/*": ["common/*"],
+      "@main/*": ["main/*"],
+      "@renderer/*": ["renderer/*"],
+      "@root/*": ["../*"],
+      "@root/package.json": ["../package.json"]
+    },
+
+    "types": ["node", "jquery"]
+  },
+
+  "include": ["src/**/*.ts", "src/**/*.tsx", "src/**/*.d.ts"],
+
+  "exclude": ["node_modules"]
+}
